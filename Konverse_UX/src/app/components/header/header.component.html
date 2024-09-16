@@ -1,10 +1,11 @@
 <nav class="mat-elevation-z8 mb-1">
   <mat-toolbar class="mat-elevation-z6">
-    <mat-toolbar-row color="primary" class="bg-whiter" style="justify-content: flex-end !important;">
-      <button mat-icon-button [matMenuTriggerFor]="menu" class="bg-whiter text-primary" id="apps">
+    <mat-toolbar-row color="primary" class="bg-whiter d-flex flex-end" style="justify-content: flex-end !important;">
+      <button mat-button [matMenuTriggerFor]="menu" class="bg-whiter text-primary" id="apps">
         <mat-icon class="material-symbols-outlined">apps</mat-icon>
+        <h2 class="pr-2 text-primary">Konverse AI</h2>
       </button>
-      <h2 class="pr-2 fs-2 text-ks text-start">Konverse</h2>
+
       <mat-menu #menu="matMenu">
         <a routerLink="/home">
           <button mat-menu-item>
@@ -32,28 +33,36 @@
         <mat-divider></mat-divider>
       </mat-menu>
 
-        <a routerLink="/files" class="text-accent mr-2">
-          <mat-icon class="material-symbols-icon">folder_open</mat-icon>
-          <span class="fs-5 text-black">My Files</span>
+        <a routerLink="/files" class="text-accent">
+          <button mat-menu-item color="accent">
+            <mat-icon class="material-symbols-icon">folder_open</mat-icon>
+            <span class="text-black">My Files</span>
+          </button>
         </a>
 
-        <a routerLink="/ai" class="text-accent mr-2">
-          <mat-icon class="material-symbols-icon">online_prediction</mat-icon>
-          <span class="fs-5 text-black">AI</span>
+        <a routerLink="/ai" class="text-accent">
+          <button mat-menu-item color="accent">
+            <mat-icon class="material-symbols-icon">online_prediction</mat-icon>
+            <span class="text-black">AI</span>
+          </button>
         </a>
 
-        <a routerLink="/blog" class="text-accent ml-2">
-          <mat-icon class="material-symbols-icon">lightbulb_circle</mat-icon>
-          <span class="fs-5 text-black">Blog</span>
+        <a routerLink="/blog" class="text-accent">
+          <button mat-menu-item color="accent">
+            <mat-icon class="material-symbols-icon">lightbulb_circle</mat-icon>
+            <span class="text-black">Blog</span>
+          </button>
         </a>
 
-        <a routerLink="/authn" class="text-accent ml-2">
-          <mat-icon class="material-symbols-icon">key</mat-icon>
-          <span class="fs-5 text-black">SignIn/Up</span>
+        <a routerLink="/authn" class="text-accent">
+          <button mat-menu-item color="accent">
+            <mat-icon class="material-symbols-icon">key</mat-icon>
+            <span class="text-black">SignIn/Up</span>
+          </button>
         </a>
     </mat-toolbar-row>
 
-    <mat-toolbar-row color="accent" class="mat-elevation-z4 text-white display-flex mb-2 bg-accent"
+    <mat-toolbar-row class="mat-elevation-z4 text-white display-flex mb-2 bg-accent"
       style="justify-content: flex-end !important;">
       <h3 class="fs-3 text-white">Chat With Your PDF Documents And Blog Posts with <span class="text-dark">Gemini</span></h3>
     </mat-toolbar-row>

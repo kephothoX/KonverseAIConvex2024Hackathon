@@ -27,7 +27,7 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void{
     const id = this._activatedRoute.snapshot.params['id'];
     this._filesService.getFile({ id: id }).subscribe((response: any) => {
-      console.log(response);
+
 
       this.File = response[0];
     })

@@ -1,17 +1,16 @@
 <section class="container-fluid">
 
-
-  <a routerLink="/files">
-    <mat-card class="card text-bg-dark mat-elevation-z8">
-      <img src="assets/images/pexels-pixabay-265152.jpg"
-        class="card-img-top object-fit-fill rounded mx-auto d-block img-fluid" alt="Konverse">
-
-
-      <mat-card-content class="card-img-overlay m-4 container">
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row">
-          <div class="col">
+  <mat-card class="card mb-3 mat-elevation-z8">
+    <a routerLink="/files">
+      <div class="row g-0">
+        <div class="col-md-4 mat-elevation-z4">
+          <a routerLink="/files">
+            <img src="assets/images/pexels-pixabay-265152.jpg"
+              class="card-img-top object-fit-fill rounded-start mx-auto d-block img-fluid" alt="Konverse">
+          </a>
+        </div>
+        <div class="col-md-8 mat-elevation-z4">
+          <div class="card-body">
             <h1 class="card-title fs-1 text-primary">My Files</h1>
             <a routerLink="/files">
               <button mat-raised-button class="text-primary">
@@ -20,26 +19,28 @@
               </button>
             </a>
           </div>
+
         </div>
-      </mat-card-content>
-    </mat-card>
-  </a>
+      </div>
+    </a>
+  </mat-card>
+
+
 
   <mat-divider></mat-divider>
-  <span class="m-4 p-4"></span>
-  <mat-divider></mat-divider>
-
-  <a routerLink="/ai">
-    <mat-card class="card text-bg-dark mat-elevation-z8">
-      <img src="assets/images/pexels-googledeepmind-25630342.jpg"
-        class="card-img-top object-fit-fill rounded mx-auto d-block img-fluid" alt="Konverse">
 
 
-      <mat-card-content class="card-img-overlay m-4 container">
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row">
-          <div class="col">
+  <mat-card class="card mb-3 mat-elevation-z8">
+    <a routerLink="/ai">
+      <div class="row g-0">
+        <div class="col-md-4 mat-elevation-z4">
+          <a routerLink="/ai">
+            <img src="assets/images/pexels-googledeepmind-25630342.jpg"
+              class="card-img-top object-fit-fill rounded-start mx-auto d-block img-fluid" alt="Konverse">
+          </a>
+        </div>
+        <div class="col-md-8 mat-elevation-z4">
+          <div class="card-body">
             <h1 class="card-title fs-1 text-primary">Chat With Your Documents</h1>
             <a routerLink="/ai">
               <button mat-raised-button class="text-primary">
@@ -48,8 +49,10 @@
               </button>
             </a>
           </div>
+
         </div>
-      </mat-card-content>
-    </mat-card>
-  </a>
+      </div>
+    </a>
+  </mat-card>
+
 </section>

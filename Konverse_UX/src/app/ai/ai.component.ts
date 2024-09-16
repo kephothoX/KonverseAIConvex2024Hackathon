@@ -34,7 +34,7 @@ export class AiComponent implements OnInit {
       window.localStorage.setItem('fileID', `${ fileID }`);
 
       this._filesService.getFile({ id: fileID }).subscribe((response: any) => {
-        console.log(response);
+
       })*/
   }
 
@@ -75,7 +75,7 @@ export class AiComponent implements OnInit {
     this._blogService.getPost({
       id: post
     }).subscribe((response: any) => {
-      console.log(response);
+
       this._router.navigate([`/blog/view/${response[0]._id }`]);
     });
   }

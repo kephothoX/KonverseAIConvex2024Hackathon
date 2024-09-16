@@ -50,7 +50,7 @@ export class ViewComponent implements OnInit {
     this._blogService.getPost({
       id: id
     }).subscribe((response: any) => {
-      console.log(response);
+
 
       this.Post = response[0]
     })

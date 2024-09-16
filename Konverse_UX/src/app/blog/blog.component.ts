@@ -20,11 +20,11 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     this._blogService.getPosts().subscribe((response: any) => {
-      console.log(response);
+
 
       this.Posts = response;
       this._blogService.getImage({ id: response[0].postThumbnailID }).subscribe((res: any) => {
-        console.log(response);
+
       })
     })
   }

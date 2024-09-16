@@ -27,7 +27,7 @@
         </mat-card-actions>-->
 
 
-        <mat-card-actions class="align-buttons-center d-flex flex-column">
+        <mat-card-actions class="align-buttons-center">
           <button class="gsi-material-button" (click)="signInWithGoogle()" [disabled]="!authEmailForm.valid">
           <div class="gsi-material-button-state"></div>
           <div class="gsi-material-button-content-wrapper">

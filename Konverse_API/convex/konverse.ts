@@ -81,8 +81,7 @@ export const UpdateFileMetaData = httpAction(async (ctx, request) => {
 export const GetFiles = httpAction(async (ctx, request) => {
   const params = JSON.parse(await request.text());
   const response = await ctx.runQuery(api.konverseQueries.GetFiles, { createdBy: params['createdBy']});
-  
-  console.log(response);
+    
 
   return new Response(JSON.stringify(response), {
     headers: new Headers({
@@ -99,8 +98,7 @@ export const GetFiles = httpAction(async (ctx, request) => {
 export const GetFile = httpAction(async (ctx, request) => {
   const params = JSON.parse(await request.text());
   const response = await ctx.runQuery(api.konverseQueries.GetFile, { id: params['id']});
-  
-  console.log(response);
+    
 
   return new Response(JSON.stringify(response), {
     headers: new Headers({
@@ -117,8 +115,7 @@ export const GetFile = httpAction(async (ctx, request) => {
 export const GetFileByFileID = httpAction(async (ctx, request) => {
   const params = JSON.parse(await request.text());
   const response = await ctx.runQuery(api.konverseQueries.GetFileByFileID, { id: params['id']});
-  
-  console.log(response);
+    
 
   return new Response(JSON.stringify(response), {
     headers: new Headers({
@@ -251,7 +248,7 @@ export const UpdateFileMetaData = httpAction(async (ctx, request) => {
 
   const response = await ctx.runQuery(api.konverseQueries.GetFileEmbeddings, { id: params['id'] });
 
-  console.log(response);
+  
 
   return new Response(JSON.stringify(response), {
     headers: new Headers({
@@ -269,8 +266,6 @@ export const UpdateFileMetaData = httpAction(async (ctx, request) => {
 
 export const DeleteFile = httpAction(async (ctx, request) => {
     const params = JSON.parse(await request.text());
-    console.log(params);
-    console.log(params['id']);
 
     const fileEmbeddings = await ctx.runQuery(api.konverseQueries.GetFileEmbeddingsByFileID, { fileID: params['id']});
     console.log(fileEmbeddings)

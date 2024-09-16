@@ -18,7 +18,7 @@ export class MyPostsComponent {
 
   ngOnInit(): void {
     this._blogService.getPostsByUser({ createdBy: 'ksoldevtestacct@gmail.com'}).subscribe((response: any) => {
-      console.log(response);
+
 
       this.Posts = response;
     })
