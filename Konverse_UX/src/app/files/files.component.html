@@ -1,0 +1,36 @@
+<section class="container-fluid">
+  <mat-card class="mat-elevation-z8" *ngIf="!Files">
+    <h4 class="fs-4 text-accent">Loading Files</h4>
+    <mat-progress-bar mode="buffer" color="accent" *ngIf="!Files"></mat-progress-bar>
+  </mat-card>
+  <mat-card-header>
+    <h2 class="text-primary fs-2">My Files</h2>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <div class="mat-elevation-z8 card-group row row-cols-1 row-cols-md-2 g-4" *ngIf="Files">
+    <div class="col-lg-2 col-md-6 col-sm-12 d-flex flex-row">
+    <mat-card class="mat-elevation-z8 card m-2 align-center" *ngFor="let file of Files">
+      <mat-card-content>
+         <mat-icon class="material-symbols-outlined text-primary pr-4">web_asset</mat-icon>
+      </mat-card-content>
+      <mat-card-footer>
+          <h6 class="fs-6">{{ file.filename }}</h6>
+          <small>{{ file._creationTime | date }}</small>
+        </mat-card-footer>
+        <mat-card-actions>
+          <a routerLink="/files/view/{{ file._id }}">
+            <button mat-icon-button color="accent" class="text-accent">
+              <mat-icon class="material-symbols-outlined">more</mat-icon>
+            </button>
+          </a>
+        </mat-card-actions>
+
+    </mat-card>
+    </div>
+  </div>
+  <a routerLink="/files/upload" class="floating-btn">
+    <button mat-fab color="accent" class="mat-elevation-z8 text-white" aria-label="Upload New File">
+        <mat-icon class="material-symbols-outlined">add</mat-icon>
+    </button>
+  </a>
+</section>

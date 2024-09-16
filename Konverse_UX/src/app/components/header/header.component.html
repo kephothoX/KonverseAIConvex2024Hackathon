@@ -1,0 +1,61 @@
+<nav class="mat-elevation-z8 mb-1">
+  <mat-toolbar class="mat-elevation-z6">
+    <mat-toolbar-row color="primary" class="bg-whiter" style="justify-content: flex-end !important;">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="bg-whiter text-primary" id="apps">
+        <mat-icon class="material-symbols-outlined">apps</mat-icon>
+      </button>
+      <h2 class="pr-2 fs-2 text-ks text-start">Konverse</h2>
+      <mat-menu #menu="matMenu">
+        <a routerLink="/home">
+          <button mat-menu-item>
+            <mat-icon class="material-symbols-outlined">home</mat-icon>
+            <h3 class="text-primary">Konverse</h3>
+            <small>Knowledge Hub</small>
+          </button>
+        </a>
+        <mat-divider></mat-divider>
+
+        <a routerLink="/blog/my-posts">
+          <button mat-menu-item>
+            <mat-icon class="material-symbols-outlined">dynamic_feed</mat-icon>
+            <h3 class="text-primary">My Posts</h3>
+          </button>
+        </a>
+
+
+        <mat-divider></mat-divider>
+
+        <h4 class="pr-3" *ngIf="accountEmail">Logged in as: <span class="text-warn">{{ accountEmail }}</span></h4>
+        <h4 class="pr-3" *ngIf="!accountEmail">Not Logged in. <a routerLink="/personal/auth/signin">Login to
+            Continue</a></h4>
+
+        <mat-divider></mat-divider>
+      </mat-menu>
+
+        <a routerLink="/files" class="text-accent mr-2">
+          <mat-icon class="material-symbols-icon">folder_open</mat-icon>
+          <span class="fs-5 text-black">My Files</span>
+        </a>
+
+        <a routerLink="/ai" class="text-accent mr-2">
+          <mat-icon class="material-symbols-icon">online_prediction</mat-icon>
+          <span class="fs-5 text-black">AI</span>
+        </a>
+
+        <a routerLink="/blog" class="text-accent ml-2">
+          <mat-icon class="material-symbols-icon">lightbulb_circle</mat-icon>
+          <span class="fs-5 text-black">Blog</span>
+        </a>
+
+        <a routerLink="/authn" class="text-accent ml-2">
+          <mat-icon class="material-symbols-icon">key</mat-icon>
+          <span class="fs-5 text-black">SignIn/Up</span>
+        </a>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row color="accent" class="mat-elevation-z4 text-white display-flex mb-2 bg-accent"
+      style="justify-content: flex-end !important;">
+      <h3 class="fs-3 text-white">Chat With Your PDF Documents And Blog Posts with <span class="text-dark">Gemini</span></h3>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</nav>

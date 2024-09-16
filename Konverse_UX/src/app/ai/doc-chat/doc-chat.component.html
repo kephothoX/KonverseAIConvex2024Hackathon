@@ -1,0 +1,73 @@
+<section class="container-fluid">
+  <mat-card class="mat-elevation-z6 card">
+    <mat-card-content>
+      <mat-form-field appearance="fill" class="form-control p-1">
+        <mat-label>Chat With Your PDF and  Gemini</mat-label>
+        <mat-hint align="end">Chat With Your Document and Gemini</mat-hint>
+        <mat-icon matPrefix class="material-symbols-outlined">forum</mat-icon>
+        <input matInput cdkScrollable cdkDrag #prompt placeholder="Chat With Your Doc">
+
+        <button mat-icon-button matTooltip="Ask Gemini" color="warn" class="text-primary"
+          (click)="ngOnSubmit(prompt.value)">
+          <mat-icon class="text-warn material-symbols-outlined">send</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" type="reset">
+          <mat-icon class="material-symbols-outlined">clear</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-divider> </mat-divider>
+
+    </mat-card-content>
+  </mat-card>
+  <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2 class="fs-2 text-primary">Response</h2>
+      </mat-panel-title>
+      <mat-panel-description> </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="alert alert-light fs-6" role="alert" cdkScrollable cdkTextareaAutosize="auto" #Response
+      [contentEditable]="true" *ngIf="PromptResponse" contenteditable="true" [innerHTML]="PromptResponse">
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!PromptResponse">
+      <mat-progress-bar mode="buffer" color="accent"></mat-progress-bar>
+      <h3 class="fs-3 text-accent">Loading Response....</h3>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (click)="highlights()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2 class="fs-2 text-primary">Highlights</h2>
+      </mat-panel-title>
+      <mat-panel-description> </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="alert alert-light fs-6" role="alert" cdkScrollable cdkTextareaAutosize="auto" #Response
+      [contentEditable]="true" *ngIf="HighlightsResponse" contenteditable="true" [innerHTML]="HighlightsResponse">
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!HighlightsResponse">
+      <mat-progress-bar mode="buffer" color="accent"></mat-progress-bar>
+      <h3 class="fs-3 text-accent">Loading as soon as Response is Filled....</h3>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (click)="summarizeContent()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h2 class="fs-2 text-primary">Summary</h2>
+      </mat-panel-title>
+      <mat-panel-description> </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="alert alert-light fs-6" role="alert" cdkScrollable cdkTextareaAutosize="auto" #Response
+      [contentEditable]="true" *ngIf="SummaryResponse" contenteditable="true" [innerHTML]="SummaryResponse">
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="!SummaryResponse">
+      <mat-progress-bar mode="buffer" color="accent"></mat-progress-bar>
+      <h3 class="fs-3 text-accent">Loading as soon as Highlights is Filled....</h3>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+</section>
+

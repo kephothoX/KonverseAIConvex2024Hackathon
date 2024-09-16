@@ -1,0 +1,106 @@
+<section class="container-fluid">
+  <mat-stepper orientation="vertical" class="mat-elevation-z6" #stepper>
+    <mat-step [stepControl]="promptForm">
+      <form [formGroup]="promptForm" class="mat-elevation-z4 centered form col-lg-6 col-md-12 col-sm-12">
+        <ng-template matStepLabel>
+          <h2 class="fs-2 text-accent">
+            <mat-icon class="material-symbols-outlined">model_training</mat-icon>
+            Find Documents & Posts Based on Query
+          </h2>
+        </ng-template>
+
+
+        <mat-form-field appearance="fill" class="p-1  form-control">
+          <mat-label>Query </mat-label>
+          <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+          <mat-hint align="end">Query</mat-hint>
+          <input type="text" matInput formControlName="query" placeholder="Query">
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+
+        <mat-card-actions class="align-buttons-center">
+          <button type="submit" mat-raised-button color="primary" (click)="ngOnSubmit()" [disabled]="!promptForm.valid"
+            matStepperNext><mat-icon class="material-symbols-outlined">search</mat-icon>Search</button>
+          <button type="reset" mat-raised-button color="warn"><mat-icon
+              class="material-symbols-outlined">cancel</mat-icon>Clear</button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>
+        <h2 class="fs-2 text-accent">
+          <mat-icon class="material-symbols-outlined">lightbulb</mat-icon>
+          Files & Posts That Match Your Query
+        </h2>
+      </ng-template>
+
+      <mat-card-content *ngIf="FilesScore">
+        <mat-list>
+          <div mat-subheader>
+            <h2 class="fs-2 text-primary">Files</h2>
+          </div>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let score of FilesScore">
+            <mat-icon matListItemIcon class="material-symbols-outlined">web_asset</mat-icon>
+            <div matListItemTitle>{{score._score}}</div>
+
+              <button mat-raised-button color="accent" (click)="openFile(score._id)">
+                <mat-icon class="material-symbols-outlined">web_asset</mat-icon>
+                Open File
+              </button>
+
+          </mat-list-item>
+
+        </mat-list>
+        <mat-divider></mat-divider>
+
+      </mat-card-content>
+      <mat-card-footer *ngIf="!FilesScore">
+        <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+        <h2 class="fs-2 text-accent">Retriving Files... This could take a moment.</h2>
+      </mat-card-footer>
+
+      <mat-divider></mat-divider>
+      <mat-card-content *ngIf="BlogScore">
+        <mat-list>
+          <div mat-subheader>
+            <h2 class="fs-2 text-primary">Blog</h2>
+          </div>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let score of BlogScore">
+            <mat-icon matListItemIcon class="material-symbols-outlined">web_asset</mat-icon>
+            <div matListItemTitle>{{score._score}}</div>
+
+              <button mat-raised-button color="accent" (click)="openPost(score._id)">
+                <mat-icon class="material-symbols-outlined">web_asset</mat-icon>
+                View Post
+              </button>
+
+          </mat-list-item>
+
+        </mat-list>
+        <mat-divider></mat-divider>
+
+      </mat-card-content>
+      <mat-card-footer *ngIf="!BlogScore">
+        <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+        <h2 class="fs-2 text-accent">Retriving Posts... This could take a moment.</h2>
+      </mat-card-footer>
+
+      <mat-card-actions>
+        <button mat-raised-button color="accent" matStepperPrevious class="text-white">
+          <mat-icon class="material-symbols-outlined">undo</mat-icon>
+          Go Back
+        </button>
+        <button mat-raised-button color="warn" (click)="stepper.reset()" class="text-white">
+          <mat-icon class="material-symbols-outlined">clear</mat-icon>
+          Reset
+        </button>
+      </mat-card-actions>
+    </mat-step>
+  </mat-stepper>
+
+</section>

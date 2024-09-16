@@ -1,0 +1,82 @@
+<section class="container-fluid">
+      <mat-card class="mat-elevation-z6 card">
+        <mat-progress-bar mode="buffer" color="accent" *ngIf="!File"></mat-progress-bar>
+        <mat-card-content *ngIf="File">
+            <mat-stepper orientation="vertical"  #stepper>
+                <mat-step [stepControl]="uploadFileForm">
+                    <form [formGroup]="uploadFileForm" class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12">
+                        <ng-template matStepLabel><h3 class="fs-3 text-primary">Upload Your PDF Document</h3></ng-template>
+
+                        <a href="{{ File.fileURL }}" class="d-block" alt="Image To Be Uploaded">
+                          {{ File.fileURL }}
+                        </a>
+                        <button mat-raised-button class="p-1">
+                            <mat-icon class="material-symbols-outlined">attachment</mat-icon>
+                            <input type="file" id="attachments" (change)="onFileChange($event)" accept=".pdf, .txt, .doc, .xls"  #newFile/>
+                        </button>
+
+                        <mat-card-actions class="align-buttons-center">
+                            <button type="submit" mat-raised-button color="primary" [disabled]="!newFile" (click)="uploadFile()" matStepperNext><mat-icon class="material-symbols-outlined">upload</mat-icon>Upload File</button>
+                            <button type="reset" mat-raised-button color="warn"><mat-icon class="material-symbols-outlined">cancel</mat-icon>Clear</button>
+                        </mat-card-actions>
+                        <div class="spacer"></div>
+
+                        <div>
+                            <small class="text-warn">Describe File in the next section.</small>
+
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="updateFileMetadataForm">
+                  <form [formGroup]="updateFileMetadataForm" class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12">
+                    <ng-template matStepLabel>
+                      <h3 class="fs-3 text-accent">Describe File</h3>
+                    </ng-template>
+
+                    <mat-form-field appearance="fill" class="p-1  form-control">
+                      <mat-label>About File</mat-label>
+                      <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+                      <mat-hint align="end">About Document</mat-hint>
+                      <textarea matInput formControlName="aboutFile" [(ngModel)]="File.aboutFile"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="p-1  form-control">
+                      <mat-label>Filename's Name </mat-label>
+                      <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+                      <mat-hint align="end">Name Of The File</mat-hint>
+                      <input type="text" matInput formControlName="filename" [(ngModel)]="File.filename">
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="fill" class="p-1  form-control">
+                      <mat-label>File Type</mat-label>
+                      <select matNativeControl formControlName="fileType" [(ngModel)]="File.fileType">
+                        <option label="--Select Applicable--"></option>
+                        <option *ngFor="let entry of FileTypes" value="{{ entry }}"> {{ entry }}</option>
+                      </select>
+                      <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+                      <mat-hint align="end">Type of Document</mat-hint>
+                      <input type="text" matInput formControlName="fileType" placeholder="Context Document">
+                    </mat-form-field>
+
+                    <mat-divider></mat-divider>
+
+
+                    <mat-card-actions class="align-buttons-center">
+                      <button type="submit" mat-raised-button color="primary" (click)="updateFileMetaData()"
+                        [disabled]="!updateFileMetadataForm.valid"><mat-icon class="material-symbols-outlined">upload</mat-icon>Upload</button>
+                      <button type="reset" mat-raised-button color="warn"><mat-icon
+                          class="material-symbols-outlined">cancel</mat-icon>Clear</button>
+                    </mat-card-actions>
+
+                  </form>
+
+                </mat-step>
+            </mat-stepper>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-divider></mat-divider>
+</section>
+

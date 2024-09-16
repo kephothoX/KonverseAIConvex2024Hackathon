@@ -1,0 +1,11 @@
+flask
+google.generativeai
+pypdf
+flask-cors
+python-dotenv
+flask-restful
+gunicorn
+convex
+pandas
+python-docx
+inscriptis

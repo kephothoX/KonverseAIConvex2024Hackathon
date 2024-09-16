@@ -1,0 +1,54 @@
+<section class="container-fluid">
+  <mat-card class="mat-elevation-z8" *ngIf="!File">
+
+    <mat-card-content>
+      <mat-progress-bar mode="buffer" color="accent"></mat-progress-bar>
+      <h3 class="fs-3 text-black">Fetching File......</h3>
+    </mat-card-content>
+
+  </mat-card>
+  <mat-card  class="mat-elevation-z8" *ngIf="File">
+    <mat-card-title>
+      <h2 class="fs-2 text-primary">File Details</h2>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div>
+        <mat-icon class="material-symbols-outlined text-primary">web_asset</mat-icon>
+        <h5 class="fs-6 text-warn">{{ File.fileType }}</h5>
+      </div>
+      <h3 class="fs-3 text-warn">{{ File.filename}}</h3>
+      <mat-divider></mat-divider>
+
+      <div contenteditable="false" class="overflow-auto">{{ File.aboutFile }}</div>
+
+      <mat-card-actions>
+        <a routerLink="/ai/doc/chat/{{ File._id}}">
+          <button mat-raised-button color="primary">
+            <mat-icon class="material-symbols-outlined">chat</mat-icon>
+            Chat With Document
+          </button>
+        </a>
+
+        <a href="{{ File.fileURL }}">
+          <button mat-raised-button color="accent" class="text-white">
+            <mat-icon class="material-symbols-outlined">download</mat-icon>
+            Download
+          </button>
+        </a>
+        <a routerLink="/files/edit/{{ File._id}}">
+          <button mat-raised-button color="warn" class="text-white">
+            <mat-icon class="material-symbols-outlined">edit</mat-icon>
+            Update
+          </button>
+        </a>
+
+        <button mat-raised-button color="warn" class="text-white" (click)="deleteFile(File._id, File.fileStorageID)">
+          <mat-icon class="material-symbols-outlined">delete</mat-icon>
+          Delete
+        </button>
+
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</section>
