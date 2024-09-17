@@ -9,9 +9,6 @@ from pathlib import Path
 import urllib.request
 from inscriptis import get_text
 
-import ebooklib
-from ebooklib import epub
-
 from flask import Flask, request
 from flask_restful import Resource, Api
 from flask import request, Response, jsonify, json, abort
@@ -29,10 +26,6 @@ from pypdf import PdfReader
 
 import docx
 import pandas as pd
-
-
-from langchain_community.document_loaders import UnstructuredEPubLoader
-
 
 from dotenv import load_dotenv
 dotenv_path = Path("./.env")
